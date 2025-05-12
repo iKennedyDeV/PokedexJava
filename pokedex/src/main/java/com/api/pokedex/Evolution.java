@@ -1,8 +1,6 @@
 package com.api.pokedex;
 
 
-import java.util.ArrayList;
-
 public class Evolution {
     private Long pokemonId;
     private Integer minLevel;
