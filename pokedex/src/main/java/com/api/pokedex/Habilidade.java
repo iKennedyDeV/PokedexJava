@@ -1,26 +1,47 @@
 package com.api.pokedex;
 
+import java.util.ArrayList;
+
 public class Habilidade {
-    String name;
-    String descricao;
-    public Habilidade (String name,String descricao){
+    private Long skillId;
+    private String name;
+    private String description;
+    private String skillType;
+    private Boolean hiddenSkill;
+    private final ArrayList<Pokemon> compatiblePokemons = new ArrayList<>();
+
+    public Habilidade(Long skillId, String name, String description, String skillType, Boolean hiddenSkill) {
+        this.skillId = skillId;
         this.name = name;
-        this.descricao = descricao;
+        this.description = description;
+        this.skillType = skillType;
+        this.hiddenSkill = hiddenSkill;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) {this.name = name;}
 
-    public String getDescricao() {
-        return descricao;
-    }
+    public String getDescription() {return description;}
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String description) {this.description = description;}
+
+    public String getSkillType() {return skillType;}
+
+    public void setSkillType(String skillType) {this.skillType = skillType;}
+
+    public Boolean getHiddenSkill() {return hiddenSkill;}
+
+    public void setHiddenSkill(Boolean hiddenSkill) {this.hiddenSkill = hiddenSkill;}
+
+    public ArrayList<Pokemon> getCompatiblePokemons() {return compatiblePokemons;}
+
+    public Long getSkillId() {return skillId;}
+
+    public void setSkillId(Long skillId) {this.skillId = skillId;}
+
+
+    public String ToString(){
+        return "";
     }
 }

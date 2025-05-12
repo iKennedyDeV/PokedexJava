@@ -4,24 +4,54 @@ package com.api.pokedex;
 import java.util.ArrayList;
 
 public class Evolution {
-    private final ArrayList<Pokemon> pokemon = new ArrayList<>();
+    private Long pokemonId;
+    private Integer minLevel;
+    private String triggerName;
+    private Pokemon self;
+    private Pokemon evolution;
 
-    public ArrayList<Pokemon> getPokemon() {
-        return pokemon;
+    public Evolution(long pokemonId,int minLevel,String triggerName,Pokemon self,Pokemon evolution){
+        this.pokemonId =pokemonId;
+        this.minLevel = minLevel;
+        this.triggerName = triggerName;
+        this.self = self;
+        this.evolution = evolution;
+
+    }
+    public Evolution(){}
+
+
+    public Integer getMinLevel() {
+        return minLevel;
     }
 
-    public void setPokemon(Pokemon pokemon) {
-        this.pokemon.add(pokemon);
-    }
-    @Override
-    public String toString() {
-        StringBuilder nomes = new StringBuilder();
-        for (Pokemon value : pokemon) {
-            nomes.append(value.getName()).append(",");
-        }
-        return nomes.toString();
+    public void setMinLevel(Integer minLevel) {
+        this.minLevel = minLevel;
     }
 
+    public String getTriggerName() {
+        return triggerName;
+    }
+
+    public void setTriggerName(String triggerName) {
+        this.triggerName = triggerName;
+    }
+
+    public Pokemon getSelf() {
+        return self;
+    }
+
+    public void setSelf(Pokemon self) {
+        this.self = self;
+    }
+
+    public Pokemon getEvolution() {
+        return evolution;
+    }
+
+    public void setEvolution(Pokemon evolution) {
+        this.evolution = evolution;
+    }
 }
 
 

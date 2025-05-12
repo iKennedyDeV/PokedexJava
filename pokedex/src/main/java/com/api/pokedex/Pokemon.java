@@ -1,28 +1,34 @@
 package com.api.pokedex;
 
 public class Pokemon {
-    int number;
+    private Long id;
     private String name;
-    private String type;
-    private Evolution evolution;
-    private Habilidade habilidade;
-    public Pokemon(int number,String name,String type, Evolution evolution,Habilidade habilidade){
-        this.number = number;
-        this.name = name;
-        this.type = type;
-        this.evolution = evolution;
-    }
-    public Pokemon(int number,String name,String type,Habilidade habilidade){
-        this.number = number;
-        this.name = name;
-        this.type = type;
-    }
+    private String imageUrl;
+    private Types types;
 
-    public void setEvolution(Evolution evolution) {
-        this.evolution = evolution;
+    public Pokemon(Long id,String name,String imageUrl,Types types){
+        this.id = id;
+        this.name = name;
+        this.imageUrl = imageUrl;
+        this.types = types;
+
     }
+    public Pokemon(){}
+
+    public String getName() {return name;}
+
+    public void setName(String name) {this.name = name;}
+
+    public String getImageUrl() {return imageUrl;}
+
+    public void setImagemUrl(String imageUrl) {this.imageUrl = imageUrl;}
+
+    public Types getTypes() {return types;}
+
+    public void setTypes(Types types) {this.types = types;}
+
     @Override
     public String toString(){
-        return "Name:"+ this.name +" type: "+this.type+" Evolution: "+ this.evolution;
+        return "Name:"+ this.name +" type: "+this.types;
     }
 }
