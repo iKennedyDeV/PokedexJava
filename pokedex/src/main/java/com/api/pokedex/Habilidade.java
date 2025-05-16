@@ -11,7 +11,7 @@ public class Habilidade {
     private String description;
     private Types skillType;
     private Boolean hiddenSkill;
-    private ArrayList<Pokemon> compatiblePokemons = new ArrayList<>();
+    private final ArrayList<Pokemon> compatiblePokemons = new ArrayList<>();
 
     public Habilidade(String name, String description, Types skillType, Boolean hiddenSkill, ArrayList<Pokemon> compatiblePokemons) {
         this.name = name;
@@ -70,5 +70,21 @@ public class Habilidade {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder pokemons = new StringBuilder();
+        for (Pokemon p : compatiblePokemons) {
+            pokemons.append(p.getName()).append(", ");
+        }
+        String pokemonList = pokemons.isEmpty() ? pokemons.substring(0, pokemons.length() - 2) : "Nenhum";
+
+        return "Habilidade {" +
+                ", Nome='" + name + '\'' +
+                ", Descrição='" + description + '\'' +
+                ", Tipo=" + skillType +
+                ", É Oculta=" + hiddenSkill +
+                ", Pokémons Compatíveis=[" + pokemonList + "]" +
+                '}';
+    }
 
 }

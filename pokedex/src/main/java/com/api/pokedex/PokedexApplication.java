@@ -26,9 +26,9 @@ public class PokedexApplication {
 		choqueTrovao.setCompatiblePokemons(raichu);
 		choqueTrovao.setCompatiblePokemons(pikachu);
 
-		ataqueRapido.getCompatiblePokemons().add(pikachu);
-		ataqueRapido.getCompatiblePokemons().add(pichu);
-		ataqueRapido.getCompatiblePokemons().add(raichu);
+		ataqueRapido.setCompatiblePokemons(pikachu);
+		ataqueRapido.setCompatiblePokemons(pichu);
+		ataqueRapido.setCompatiblePokemons(raichu);
 
 		Evolution pikachuEvo = new Evolution();
 		pikachuEvo.addEvolution(0,raichu);
@@ -39,6 +39,8 @@ public class PokedexApplication {
 		pikachu.setEvolution(pikachuEvo);
 		raichu.setEvolution(pikachuEvo);
 
+		System.out.println(pichu);
+		System.out.println(pichu);
 		System.out.println(pichu);
 
 
