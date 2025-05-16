@@ -1,5 +1,7 @@
 package com.api.pokedex;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 
 public class Evolution {

@@ -13,9 +13,9 @@ public class PokedexApplication {
 		Types raio = new Types("Raio");
 		Types corpoACorpo = new Types("Corpo a corpo");
 
-		Pokemon pikachu = new Pokemon("Pikachu","",raio);
+		Pokemon pikachu = new Pokemon("Pikachu","https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/025.png",raio);
 		Pokemon pichu = new Pokemon("Pichu","https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/172.png",raio);
-		Pokemon raichu = new Pokemon("Raichu","",raio);
+		Pokemon raichu = new Pokemon("Raichu","https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/026.png",raio);
 
 		Habilidade ataqueRapido = new Habilidade("Ataque Rapido",
 				"Um Avanço seguido de um ataque leve",corpoACorpo,true);
@@ -40,8 +40,8 @@ public class PokedexApplication {
 		raichu.setEvolution(pikachuEvo);
 
 		System.out.println(pichu);
-		System.out.println(pichu);
-		System.out.println(pichu);
+		System.out.println(pikachu);
+		System.out.println(raichu);
 
 
 	}
