@@ -1,25 +1,32 @@
 package com.api.pokedex;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@ToString
 public class Types {
    private static Long idCounter = 0L;
    private Long typeId;
    private String typePokemon;
 
+   public Types() {
+   }
+
+   public String getTypePokemon() {
+      return typePokemon;
+   }
+
+   public void setTypePokemon(String typePokemon) {
+      this.typePokemon = typePokemon;
+   }
 
    public Types(String typePokemon){
       idCounter += 1;
       typeId = idCounter;
       this.typePokemon = typePokemon;
    }
+
+   public Long getTypeId() {
+      return typeId;
+   }
+
 }
 
 

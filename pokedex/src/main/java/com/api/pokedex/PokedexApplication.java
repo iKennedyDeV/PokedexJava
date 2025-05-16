@@ -14,7 +14,7 @@ public class PokedexApplication {
 		Types corpoACorpo = new Types("Corpo a corpo");
 
 		Pokemon pikachu = new Pokemon("Pikachu","",raio);
-		Pokemon pichu = new Pokemon("Pichu","",raio);
+		Pokemon pichu = new Pokemon("Pichu","https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/172.png",raio);
 		Pokemon raichu = new Pokemon("Raichu","",raio);
 
 		Habilidade ataqueRapido = new Habilidade("Ataque Rapido",
@@ -22,9 +22,9 @@ public class PokedexApplication {
 		Habilidade choqueTrovao = new Habilidade("Choque do Trovao",
 				"Concentra um ataque poderoso a distancia",raio,true);
 
-        choqueTrovao.getCompatiblePokemons().add(pikachu);
-		choqueTrovao.getCompatiblePokemons().add(raichu);
-		choqueTrovao.getCompatiblePokemons().add(pikachu);
+        choqueTrovao.setCompatiblePokemons(pikachu);
+		choqueTrovao.setCompatiblePokemons(raichu);
+		choqueTrovao.setCompatiblePokemons(pikachu);
 
 		ataqueRapido.getCompatiblePokemons().add(pikachu);
 		ataqueRapido.getCompatiblePokemons().add(pichu);

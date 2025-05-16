@@ -1,31 +1,25 @@
 package com.api.pokedex;
 
-
-import lombok.*;
-
 import java.util.ArrayList;
 
-
-@Getter
-@Setter
-@AllArgsConstructor
-@ToString
 public class Evolution {
     private static Long idCounter = 0L;
-    private Long evolutionId;
+    private final Long evolutionId;
+    private final ArrayList<EvolutionStep> evolutions = new ArrayList<>();
 
     public ArrayList<EvolutionStep> getEvolutions() {
-        return new ArrayList<>();
+        return evolutions;
     }
-
-    private ArrayList<EvolutionStep> evolutions;
-
     public Evolution(){
         idCounter += 1;
-        this.evolutionId = idCounter;
+        this.evolutionId = (idCounter);
     }
 
-    public void addEvolution(Integer minLevel,Pokemon pokemon){
+    public Long getEvolutionId() {
+        return evolutionId;
+    }
+
+    public void addEvolution(Integer minLevel, Pokemon pokemon){
         this.evolutions.add(new EvolutionStep(minLevel,pokemon));
     }
 

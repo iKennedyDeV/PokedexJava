@@ -1,13 +1,6 @@
 package com.api.pokedex;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
-
-@Getter
-@Setter
-@AllArgsConstructor
 public class Pokemon {
     private static Long idCounter = 0L;
     private Long idPokemon;
@@ -25,6 +18,38 @@ public class Pokemon {
         this.type = type;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Types getType() {
+        return type;
+    }
+
+    public void setType(Types type) {
+        this.type = type;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Evolution getEvolution() {
+        return evolution;
+    }
+
+    public void setEvolution(Evolution evolution) {
+        this.evolution = evolution;
+    }
+
     @Override
     public String toString() {
         StringBuilder evolutionsStr = new StringBuilder();
@@ -39,7 +64,7 @@ public class Pokemon {
         }
 
         return "Name: " + this.name + "\n" +
-                "Type: " + this.type + "\n" +
+                "Type: " + this.type.getTypePokemon() + "\n" +
                 "Img: " + this.imageUrl + "\n" +
                 "Evolutions: " + evolutionsStr.toString();
     }
