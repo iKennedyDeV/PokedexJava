@@ -1,24 +1,25 @@
 package com.api.pokedex;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
 public class Types {
-   private Long pokemonId;
-   private String pokemonType;
+   private static Long idCounter = 0L;
+   private Long typeId;
+   private String typePokemon;
 
-    public Types(Long pokemonId, String pokemonType) {
-        this.pokemonId = pokemonId;
-        this.pokemonType = pokemonType;
-    }
-    public Types(){}
 
-    public Long getPokemonId() {return pokemonId;}
-
-    public void setPokemonId(Long pokemonId) {this.pokemonId = pokemonId;}
-
-    public String getPokemonType() {return pokemonType;}
-
-    public void setPokemonType(String pokemonType) {this.pokemonType = pokemonType;}
-
-    public String ToString(){
-        return "";
-    }
+   public Types(String typePokemon){
+      idCounter += 1;
+      typeId = idCounter;
+      this.typePokemon = typePokemon;
+   }
 }
+
+

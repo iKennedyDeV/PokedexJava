@@ -1,34 +1,50 @@
 package com.api.pokedex;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+@AllArgsConstructor
 public class Pokemon {
-    private Long id;
+    private static Long idCounter = 0L;
+    private Long idPokemon;
     private String name;
     private String imageUrl;
-    private Types types;
+    private Types type;
+    private Evolution evolution;
 
-    public Pokemon(Long id,String name,String imageUrl,Types types){
-        this.id = id;
+
+    public Pokemon(String name, String imageUrl, Types type) {
+        idCounter += 1;
+        this.idPokemon = idCounter;
         this.name = name;
         this.imageUrl = imageUrl;
-        this.types = types;
-
+        this.type = type;
     }
-    public Pokemon(){}
-
-    public String getName() {return name;}
-
-    public void setName(String name) {this.name = name;}
-
-    public String getImageUrl() {return imageUrl;}
-
-    public void setImagemUrl(String imageUrl) {this.imageUrl = imageUrl;}
-
-    public Types getTypes() {return types;}
-
-    public void setTypes(Types types) {this.types = types;}
 
     @Override
-    public String toString(){
-        return "Name:"+ this.name +" type: "+this.types;
+    public String toString() {
+        StringBuilder evolutionsStr = new StringBuilder();
+        if (this.evolution != null && this.evolution.getEvolutions() != null) {
+            for (EvolutionStep s : this.evolution.getEvolutions()) {
+                evolutionsStr.append(s).append(", ");
+            }
+
+            if (!evolutionsStr.isEmpty()) {
+                evolutionsStr.setLength(evolutionsStr.length() - 2);
+            }
+        }
+
+        return "Name: " + this.name + "\n" +
+                "Type: " + this.type + "\n" +
+                "Img: " + this.imageUrl + "\n" +
+                "Evolutions: " + evolutionsStr.toString();
     }
+
+
+
+
 }
