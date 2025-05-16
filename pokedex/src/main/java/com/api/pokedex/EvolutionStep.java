@@ -17,9 +17,9 @@ public class EvolutionStep {
         this.minLevel = minLevel;
         this.pokemon = pokemon;
     }
-//    @Override
-//    public String toString() {
-//        return "Lv." + minLevel + " → " + pokemon.getName();
-//    }
+  @Override
+   public String toString() {
+       return "Lv." + minLevel + " → " + pokemon.getName();
+   }
 
 }
