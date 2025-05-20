@@ -1,7 +1,5 @@
 package com.api.pokedex;
 
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 
 public class Evolution {
@@ -16,7 +14,11 @@ public class Evolution {
         idCounter += 1;
         this.evolutionId = (idCounter);
     }
-
+    public Evolution(Integer minLevel ,Pokemon pokemon){
+        idCounter += 1;
+        this.evolutionId = (idCounter);
+        addEvolution(minLevel,pokemon);
+    }
     public Long getEvolutionId() {
         return evolutionId;
     }

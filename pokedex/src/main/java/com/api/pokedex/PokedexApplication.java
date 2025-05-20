@@ -22,9 +22,9 @@ public class PokedexApplication {
 		Habilidade choqueTrovao = new Habilidade("Choque do Trovao",
 				"Concentra um ataque poderoso a distancia",raio,true);
 
-        choqueTrovao.setCompatiblePokemons(pikachu);
-		choqueTrovao.setCompatiblePokemons(raichu);
+        choqueTrovao.setCompatiblePokemons(pichu);
 		choqueTrovao.setCompatiblePokemons(pikachu);
+		choqueTrovao.setCompatiblePokemons(raichu);
 
 		ataqueRapido.setCompatiblePokemons(pikachu);
 		ataqueRapido.setCompatiblePokemons(pichu);
