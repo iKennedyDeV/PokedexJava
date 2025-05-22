@@ -38,6 +38,6 @@ public class Pokemon {
         return "Name: " + this.name + "\n" +
                 "Type: " + this.type.getTypePokemon() + "\n" +
                 "Img: " + this.imageUrl + "\n" +
-                "Evolutions: " + evolutionsStr.toString();
+                "Evolutions: " + evolutionsStr;
     }
 }
