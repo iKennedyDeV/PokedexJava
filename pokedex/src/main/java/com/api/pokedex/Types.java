@@ -1,13 +1,14 @@
 package com.api.pokedex;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Types {
    private static Long idCounter = 0L;
-
    private Long typeId;
    private String typePokemon;
 

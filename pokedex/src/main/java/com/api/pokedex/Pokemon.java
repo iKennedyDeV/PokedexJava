@@ -1,14 +1,14 @@
 package com.api.pokedex;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Pokemon {
     private static Long idCounter = 0L;
-
     private Long idPokemon;
     private String name;
     private String imageUrl;
@@ -30,7 +30,6 @@ public class Pokemon {
             for (EvolutionStep s : this.evolution.getEvolutions()) {
                 evolutionsStr.append(s).append(", ");
             }
-
             if (!evolutionsStr.isEmpty()) {
                 evolutionsStr.setLength(evolutionsStr.length() - 2);
             }

@@ -1,15 +1,14 @@
 package com.api.pokedex;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 public class Habilidade {
     private static Long idCounter = 0L;
-
     private Long skillId;
     private String name;
     private String description;
@@ -36,9 +35,7 @@ public class Habilidade {
         for (Pokemon p : compatiblePokemons) {
             pokemons.append(p.getName()).append(", ");
         }
-        String pokemonList = pokemons.length() > 0
-                ? pokemons.substring(0, pokemons.length() - 2)
-                : "Nenhum";
+        String pokemonList = pokemons.isEmpty() ? "Nenhum" : pokemons.substring(0, pokemons.length() - 2);
 
         return "Habilidade {" +
                 "Nome='" + name + '\'' +
