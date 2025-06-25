@@ -26,7 +26,7 @@ public class Pokemon {
     @Override
     public String toString() {
         StringBuilder evolutionsStr = new StringBuilder();
-        if (this.evolution != null && this.evolution.getEvolutions() != null) {
+        if ((this.evolution != null) && (this.evolution.getEvolutions() != null)) {
             for (EvolutionStep s : this.evolution.getEvolutions()) {
                 evolutionsStr.append(s).append(", ");
             }

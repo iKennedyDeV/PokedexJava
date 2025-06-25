@@ -20,6 +20,7 @@ public class EvolutionStep {
         this.pokemon = pokemon;
     }
 
+
     @Override
     public String toString() {
         return "Lv." + minLevel + " → " + pokemon.getName();
