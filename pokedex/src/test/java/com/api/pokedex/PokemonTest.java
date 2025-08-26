@@ -3,96 +3,89 @@ package com.api.pokedex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class PokemonTest {
 
-    private Types type;
-    private String name;
-    private String url;
-    private Pokemon pokemon1;
-    private int minLevel;
+  private Types type;
+  private String name;
+  private String url;
+  private Pokemon pokemon1;
+  private int minLevel;
 
-    @BeforeEach
-    public void setUp() {
-        this.type = new Types("Raio");
-        this.name = "Pikachu";
-        this.url = "https://exemplo.com/imagem.png";
-        this.minLevel = 1;
+  @BeforeEach
+  public void setUp() {
+    this.type = new Types("Raio");
+    this.name = "Pikachu";
+    this.url = "https://exemplo.com/imagem.png";
+    this.minLevel = 1;
+    this.pokemon1 = new Pokemon(this.name, this.url, this.type);
+    var evolution = new Evolution(this.minLevel, pokemon1);
+    this.pokemon1.setEvolution(evolution);
+  }
 
-        // Cria Pokémon base
-        this.pokemon1 = new Pokemon(this.name, this.url, this.type);
+  @Test
+  public void seRetornarNomeDoPokemon() {
+    assertAll(
+        ()->assertEquals(this.name, pokemon1.getName()),
+        ()-> assertEquals(this.url, pokemon1.getImageUrl()),
+        ()->assertEquals(this.type, pokemon1.getType()),
+        ()->assertEquals("Raio", pokemon1.getType().getTypePokemon()));
+  }
 
-        // Cria evolução para o Pokémon
-        Evolution evolution = new Evolution(this.minLevel, pokemon1);
-        this.pokemon1.setEvolution(evolution);
-    }
+  @Test
+  public void seGerarIdValidoParaPokemon() {
+    assertNotNull(pokemon1.getIdPokemon());
+    assertTrue(pokemon1.getIdPokemon() > 0);
+  }
 
-    @Test
-    public void seRetornarNomeDoPokemon() {
-        assertEquals("Pikachu", pokemon1.getName());
-    }
+  @Test
+  public void seRetornarEvolucaoComNomeEMinLevel() {
+    var step = pokemon1.getEvolution().getEvolutions().get(0);
+    assertEquals("Pikachu", step.getPokemon().getName());
+    assertEquals(1, step.getMinLevel());
+  }
 
-    @Test
-    public void seRetornarUrlDoPokemon() {
-        assertEquals("https://exemplo.com/imagem.png", pokemon1.getImageUrl());
-    }
+  @Test
+  public void seRetornarEvolutionsVazioQuandoEvolutionNull() {
+    var pokemon = new Pokemon(this.name, this.url, this.type);
+    pokemon.setEvolution(null);
 
-    @Test
-    public void seRetornarTipoDoPokemon() {
-        assertEquals(this.type, pokemon1.getType());
-        assertEquals("Raio", pokemon1.getType().getTypePokemon());
-    }
+    String result = pokemon.toString();
 
-    @Test
-    public void seGerarIdValidoParaPokemon() {
-        assertNotNull(pokemon1.getIdPokemon());
-        assertTrue(pokemon1.getIdPokemon() > 0);
-    }
+    assertTrue(result.contains("Evolutions:"));
+    assertTrue(result.endsWith("Evolutions: "));
+  }
 
-    @Test
-    public void seRetornarEvolucaoComNomeEMinLevel() {
-        EvolutionStep step = pokemon1.getEvolution().getEvolutions().get(0);
-        assertEquals("Pikachu", step.getPokemon().getName());
-        assertEquals(1, step.getMinLevel());
-    }
+  @Test
+  public void seRetornarEvolutionsVazioQuandoListaNull() {
+    var pokemon = new Pokemon(this.name, this.url, this.type);
+    pokemon.setEvolution(new Evolution());
+    String result = pokemon.toString();
 
-    @Test
-    public void seRetornarEvolutionsVazioQuandoEvolutionNull() {
-        Pokemon pokemon = new Pokemon(this.name, this.url, this.type);
-        pokemon.setEvolution(null);
+    assertTrue(result.contains("Evolutions:"));
+    assertTrue(result.endsWith("Evolutions: "));
+  }
 
-        String result = pokemon.toString();
+  @Test
+  public void seRetornarCamposNulosNoConstrutorSemArgs() {
+    var pokemon2 = new Pokemon();
+    assertNull(pokemon2.getName());
+    assertNull(pokemon2.getImageUrl());
+    assertNull(pokemon2.getType());
+  }
 
-        assertTrue(result.contains("Evolutions:"));
-        assertTrue(result.endsWith("Evolutions: "));
-    }
+  @Test
+  public void seRetornarToStringComDadosDoPokemon() {
+    String result = pokemon1.toString();
 
-    @Test
-    public void seRetornarEvolutionsVazioQuandoListaNull() {
-        Pokemon pokemon = new Pokemon(this.name, this.url, this.type);
-        pokemon.setEvolution(new Evolution());
-        String result = pokemon.toString();
-
-        assertTrue(result.contains("Evolutions:"));
-        assertTrue(result.endsWith("Evolutions: "));
-    }
-
-    @Test
-    public void seRetornarCamposNulosNoConstrutorSemArgs() {
-        Pokemon pokemon2 = new Pokemon();
-        assertNull(pokemon2.getName());
-        assertNull(pokemon2.getImageUrl());
-        assertNull(pokemon2.getType());
-    }
-
-    @Test
-    public void seRetornarToStringComDadosDoPokemon() {
-        String result = pokemon1.toString();
-
-        assertTrue(result.contains("Name: Pikachu"));
-        assertTrue(result.contains("Type: Raio"));
-        assertTrue(result.contains("Img: https://exemplo.com/imagem.png"));
-        assertTrue(result.contains("Evolutions: Lv.1 → Pikachu"));
-    }
+    assertTrue(result.contains("Name: Pikachu"));
+    assertTrue(result.contains("Type: Raio"));
+    assertTrue(result.contains("Img: https://exemplo.com/imagem.png"));
+    assertTrue(result.contains("Evolutions: Lv.1 → Pikachu"));
+  }
 }
